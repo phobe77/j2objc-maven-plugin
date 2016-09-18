@@ -124,6 +124,9 @@ public class J2ObjCConverterMojo extends AbstractMojo {
     @Parameter(defaultValue = "false")
     private Boolean noPackageDirectories;
 
+    @Parameter(defaultValue = "false")
+    private Boolean packagePrefixedFilenames;
+
     @Parameter(defaultValue = "")
     private String prefix;
 
@@ -317,6 +320,9 @@ public class J2ObjCConverterMojo extends AbstractMojo {
         }
         if (noPackageDirectories) {
             result.add("--no-package-directories");
+        }
+        if (packagePrefixedFilenames) {
+            result.add("--package-prefixed-filenames");
         }
         if (StringUtils.isNotBlank(prefix)) {
             result.add(String.format("--prefix %s", prefix));
